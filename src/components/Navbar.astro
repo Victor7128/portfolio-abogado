@@ -1,109 +1,231 @@
+---
+// Navbar.astro
+const links = [
+  { href: "#inicio", label: "Inicio" },
+  { href: "#servicios", label: "Servicios" },
+  { href: "#nosotros", label: "Nosotros" },
+  { href: "#casos", label: "Casos" },
+  { href: "#contacto", label: "Contacto" },
+];
+---
+
+<!-- ─── Navbar ─── -->
 <header
   id="navbar"
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
 >
   <div class="container-narrow">
     <nav class="flex items-center justify-between py-6">
+      <!-- Logo -->
       <a
         href="/"
-        class="font-display text-xl tracking-widest uppercase text-ink hover:text-gold transition-colors duration-300"
+        class="font-display text-xl tracking-widest uppercase text-ink hover:text-gold transition-colors duration-300 relative z-50"
       >
         Martínez <span class="text-gold">&</span> Asociados
       </a>
 
+      <!-- Desktop links -->
       <ul class="hidden md:flex items-center gap-10">
-        {[
-          { href: "#inicio",    label: "Inicio"    },
-          { href: "#servicios", label: "Servicios" },
-          { href: "#nosotros",  label: "Nosotros"  },
-          { href: "#casos",     label: "Casos"     },
-          { href: "#contacto",  label: "Contacto"  },
-        ].map((item) => (
-          <li>
-            <a
-              href={item.href}
-              class="text-sm tracking-widest uppercase text-ink-muted hover:text-ink transition-colors duration-300 relative group"
-            >
-              {item.label}
-              <span class="absolute -bottom-0.5 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          </li>
-        ))}
+        {
+          links.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class="text-sm tracking-widest uppercase text-ink-muted hover:text-ink transition-colors duration-300 relative group"
+              >
+                {label}
+                <span class="absolute -bottom-0.5 left-0 w-0 h-px bg-gold transition-all duration-300 group-hover:w-full" />
+              </a>
+            </li>
+          ))
+        }
       </ul>
 
+      <!-- Desktop CTA -->
       <a
         href="#contacto"
-        class="hidden md:inline-flex items-center gap-2 text-sm tracking-widest uppercase border border-gold text-gold px-6 py-2.5 hover:bg-gold hover:text-cream transition-all duration-300"
+        class="hidden md:inline-flex text-sm tracking-widest uppercase border border-gold text-gold px-6 py-2.5 hover:bg-gold hover:text-cream transition-all duration-300"
       >
         Consulta Gratis
       </a>
 
-      <!-- Mobile Burger -->
+      <!-- Mobile burger -->
       <button
-        id="menu-toggle"
-        class="md:hidden flex flex-col gap-1.5 p-1"
+        id="navMenuBtn"
         aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+        class="md:hidden relative z-50 flex flex-col justify-center gap-1.25 w-8 h-8 cursor-pointer bg-transparent border-none p-0"
       >
-        <span class="w-6 h-px bg-ink transition-all duration-300 block" id="bar1"></span>
-        <span class="w-6 h-px bg-ink transition-all duration-300 block" id="bar2"></span>
-        <span class="w-4 h-px bg-ink transition-all duration-300 block" id="bar3"></span>
+        <span
+          class="nav-bar block h-px w-6 bg-ink transition-all duration-300 origin-center"
+        ></span>
+        <span
+          class="nav-bar block h-px w-6 bg-ink transition-all duration-300 origin-center"
+        ></span>
+        <span
+          class="nav-bar block h-px w-4 bg-ink transition-all duration-300 origin-center"
+        ></span>
       </button>
     </nav>
   </div>
+</header>
 
-  <!-- Mobile Menu -->
+<!-- ─── Mobile full-screen menu (light) ─── -->
+<div
+  id="mobileMenu"
+  inert
+  aria-hidden="true"
+  class="mobile-menu fixed inset-0 z-40 bg-cream flex flex-col px-8 pt-28 pb-12"
+>
+  <!-- Decorative gold accent -->
   <div
-    id="mobile-menu"
-    class="md:hidden hidden bg-cream border-t border-cream-dark px-6 py-8"
+    class="absolute left-8 top-28 bottom-12 w-px bg-linear-to-b from-gold via-gold-pale to-transparent opacity-40 pointer-events-none"
   >
-    <ul class="flex flex-col gap-6">
-      {[
-        { href: "#inicio",    label: "Inicio"    },
-        { href: "#servicios", label: "Servicios" },
-        { href: "#nosotros",  label: "Nosotros"  },
-        { href: "#casos",     label: "Casos"     },
-        { href: "#contacto",  label: "Contacto"  },
-      ].map((item) => (
-        <li>
+  </div>
+
+  <!-- Nav links -->
+  <ul class="flex flex-col gap-1 flex-1 pl-6">
+    {
+      links.map(({ href, label }, i) => (
+        <li class="menu-item" style={`--i: ${i}`}>
           <a
-            href={item.href}
-            class="font-display text-2xl text-ink hover:text-gold transition-colors duration-300"
+            href={href}
+            class="font-display text-[clamp(2.5rem,9vw,4rem)] leading-snug text-ink hover:text-gold transition-all duration-300 block"
           >
-            {item.label}
+            {label}
           </a>
         </li>
-      ))}
-    </ul>
+      ))
+    }
+  </ul>
+
+  <!-- Bottom row -->
+  <div class="pl-6 flex flex-col gap-4 border-t border-cream-dark pt-8">
     <a
       href="#contacto"
-      class="mt-8 inline-flex text-sm tracking-widest uppercase border border-gold text-gold px-6 py-3 hover:bg-gold hover:text-cream transition-all duration-300"
+      class="self-start text-xs tracking-widest uppercase border border-gold text-gold px-6 py-3 hover:bg-gold hover:text-cream transition-all duration-300"
     >
       Consulta Gratis
     </a>
+    <p class="text-[10px] tracking-[0.2em] uppercase text-ink-muted">
+      Lima, Perú · +51 1 234 5678
+    </p>
   </div>
-</header>
+</div>
+
+<!-- Using :global() so Astro doesn't scope these selectors -->
+<style is:global>
+  /* ── Menu enter/exit ── */
+  .mobile-menu {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition:
+      opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0s linear 0.4s;
+  }
+  .mobile-menu.is-open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0s linear 0s;
+  }
+
+  /* ── Staggered links ── */
+  .menu-item {
+    opacity: 0;
+    transform: translateX(-12px);
+    transition:
+      opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1) calc(0.05s + var(--i) * 0.06s),
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)
+        calc(0.05s + var(--i) * 0.06s);
+  }
+  .mobile-menu.is-open .menu-item {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* ── Burger → X ── */
+  #navMenuBtn.is-open .nav-bar:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+    width: 1.5rem;
+  }
+  #navMenuBtn.is-open .nav-bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  #navMenuBtn.is-open .nav-bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+    width: 1.5rem;
+  }
+</style>
 
 <script>
-  const navbar   = document.getElementById("navbar")!;
-  const toggle   = document.getElementById("menu-toggle")!;
-  const mobileMenu = document.getElementById("mobile-menu")!;
+  const navBtn = document.getElementById(
+    "navMenuBtn",
+  ) as HTMLButtonElement | null;
+  const mobileMenu = document.getElementById(
+    "mobileMenu",
+  ) as HTMLElement | null;
+  const navbar = document.getElementById("navbar") as HTMLElement | null;
 
-  // Scroll: glass effect
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 40) {
-      navbar.classList.add("bg-[var(--color-cream)]/95", "backdrop-blur-sm", "shadow-sm");
-    } else {
-      navbar.classList.remove("bg-[var(--color-cream)]/95", "backdrop-blur-sm", "shadow-sm");
-    }
-  });
+  function openMenu() {
+    if (!mobileMenu || !navBtn) return;
+    mobileMenu.removeAttribute("inert");
+    mobileMenu.removeAttribute("aria-hidden");
+    mobileMenu.classList.add("is-open");
+    navBtn.classList.add("is-open");
+    navBtn.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
 
-  // Mobile toggle
-  toggle.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
+  function closeMenu() {
+    if (!mobileMenu || !navBtn) return;
+    mobileMenu.classList.remove("is-open");
+    navBtn.classList.remove("is-open");
+    navBtn.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+    setTimeout(() => {
+      mobileMenu.setAttribute("inert", "");
+      mobileMenu.setAttribute("aria-hidden", "true");
+    }, 400);
+    navBtn.focus();
+  }
+
+  navBtn?.addEventListener("click", () => {
+    const isOpen = mobileMenu?.classList.contains("is-open");
+    isOpen ? closeMenu() : openMenu();
   });
 
   // Close on link click
-  mobileMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => mobileMenu.classList.add("hidden"));
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  // Close on Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && mobileMenu?.classList.contains("is-open"))
+      closeMenu();
+  });
+
+  // Frosted glass on scroll
+  window.addEventListener("scroll", () => {
+    if (!navbar) return;
+    if (window.scrollY > 40) {
+      navbar.style.backgroundColor =
+        "color-mix(in srgb, var(--color-cream) 94%, transparent)";
+      navbar.style.backdropFilter = "blur(10px)";
+      navbar.style.borderBottom =
+        "1px solid color-mix(in srgb, var(--color-ink) 7%, transparent)";
+    } else {
+      navbar.style.backgroundColor = "";
+      navbar.style.backdropFilter = "";
+      navbar.style.borderBottom = "";
+    }
   });
 </script>
