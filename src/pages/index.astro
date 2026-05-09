@@ -1,11 +1,56 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import Stats from "../components/Stats.astro";
+import PracticeAreas from "../components/PracticeAreas.astro";
+import About from "../components/About.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
-	<Welcome />
+	<Navbar />
+
+	<main>
+		<Hero />
+		<Stats />
+		<PracticeAreas />
+		<About />
+		<Testimonials />
+		<Contact />
+	</main>
+
+	<Footer />
 </Layout>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target as HTMLElement;
+          if (entry.isIntersecting) {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document
+      .querySelectorAll<HTMLElement>("section > div > *, section > div > div > *")
+      .forEach((el) => {
+        if (!el.closest("#inicio")) {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(20px)";
+          el.style.transition =
+            "opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1)";
+          observer.observe(el);
+        }
+      });
+  });
+</script>

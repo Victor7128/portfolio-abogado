@@ -1,0 +1,112 @@
+---
+// Footer.astro
+
+const links = {
+  servicios: [
+    "Derecho Civil",
+    "Derecho Corporativo",
+    "Derecho Penal",
+    "Derecho Laboral",
+    "Derecho Familiar",
+  ],
+  estudio: [
+    { label: "Sobre Nosotros", href: "#nosotros" },
+    { label: "Testimonios",    href: "#casos"    },
+    { label: "Contacto",       href: "#contacto" },
+  ],
+};
+---
+
+<footer class="bg-ink text-cream">
+
+  <!-- Main footer -->
+  <div class="container-narrow py-20">
+    <div class="grid md:grid-cols-12 gap-12">
+
+      <!-- Brand -->
+      <div class="md:col-span-4">
+        <a href="/" class="font-display text-2xl tracking-widest uppercase text-cream hover:text-gold transition-colors duration-300">
+          Martínez <span class="text-gold">&</span> Asociados
+        </a>
+        <p class="text-cream opacity-40 text-sm leading-relaxed mt-6 max-w-xs">
+          Estudio jurídico de excelencia al servicio de personas y empresas. 
+          Comprometidos con su tranquilidad y sus resultados.
+        </p>
+        <!-- Social links -->
+        <div class="flex gap-3 mt-8">
+          {[
+            { label: "LinkedIn", href: "#", icon: `<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>` },
+            { label: "Twitter", href: "#", icon: `<path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>` },
+          ].map((s) => (
+            <a
+              href={s.href}
+              aria-label={s.label}
+              class="w-9 h-9 border border-ink-light flex items-center justify-center text-cream opacity-40 hover:opacity-100 hover:border-gold hover:text-gold transition-all duration-300"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" set:html={s.icon}></svg>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Spacer -->
+      <div class="md:col-span-1"></div>
+
+      <!-- Servicios -->
+      <div class="md:col-span-3">
+        <p class="text-xs tracking-[0.3em] uppercase text-gold mb-6">Servicios</p>
+        <ul class="flex flex-col gap-3">
+          {links.servicios.map((s) => (
+            <li>
+              <a href="#servicios" class="text-sm text-cream opacity-40 hover:opacity-100 hover:text-gold transition-all duration-300">
+                {s}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Estudio -->
+      <div class="md:col-span-2">
+        <p class="text-xs tracking-[0.3em] uppercase text-gold mb-6">Estudio</p>
+        <ul class="flex flex-col gap-3">
+          {links.estudio.map((item) => (
+            <li>
+              <a href={item.href} class="text-sm text-cream opacity-40 hover:opacity-100 hover:text-gold transition-all duration-300">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- CTA block -->
+      <div class="md:col-span-2 flex flex-col justify-start">
+        <p class="text-xs tracking-[0.3em] uppercase text-gold mb-6">Consulta</p>
+        <p class="text-xs text-cream opacity-40 leading-relaxed mb-4">
+          Primera consulta gratuita y confidencial.
+        </p>
+        <a
+          href="#contacto"
+          class="inline-flex items-center gap-2 text-xs tracking-widest uppercase border border-gold text-gold px-4 py-2.5 hover:bg-gold hover:text-ink transition-all duration-300"
+        >
+          Escribir ahora
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-ink-light py-6">
+    <div class="container-narrow flex flex-col sm:flex-row justify-between items-center gap-3">
+      <p class="text-xs text-cream opacity-25">
+        © {new Date().getFullYear()} Martínez & Asociados. Todos los derechos reservados.
+      </p>
+      <p class="text-xs text-cream opacity-25">
+        Lima, Perú · Colegio de Abogados Nro. 45382
+      </p>
+    </div>
+  </div>
+
+</footer>

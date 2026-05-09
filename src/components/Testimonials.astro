@@ -1,0 +1,76 @@
+---
+// Testimonials.astro
+
+const testimonials = [
+  {
+    quote:
+      "El Dr. Martínez manejó mi proceso de divorcio con una profesionalidad excepcional. Su equipo estuvo disponible en todo momento y los resultados superaron mis expectativas.",
+    author: "Carmen R.",
+    role: "Cliente — Derecho Familiar",
+    initial: "C",
+  },
+  {
+    quote:
+      "Gracias a su asesoría corporativa, logramos estructurar nuestra empresa de forma óptima desde el inicio. Evitamos riesgos que jamás hubiéramos anticipado solos.",
+    author: "Empresas Valverde S.A.C.",
+    role: "Cliente — Derecho Corporativo",
+    initial: "V",
+  },
+  {
+    quote:
+      "Un equipo que realmente escucha. La estrategia legal que diseñaron para nuestro caso penal fue brillante. Nunca pensé que saldríamos con ese resultado.",
+    author: "Manuel O.",
+    role: "Cliente — Derecho Penal",
+    initial: "M",
+  },
+];
+---
+
+<section id="casos" class="section-padding bg-cream-dark">
+  <div class="container-narrow">
+
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <p class="text-xs tracking-[0.3em] uppercase text-gold mb-4 flex items-center justify-center gap-3">
+        <span class="w-8 h-px bg-gold"></span>
+        Testimonios
+        <span class="w-8 h-px bg-gold"></span>
+      </p>
+      <h2
+        class="font-display text-ink leading-tight"
+        style="font-size: var(--text-display-md);"
+      >
+        Lo que dicen<br />
+        nuestros <em class="text-gold not-italic">clientes.</em>
+      </h2>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid md:grid-cols-3 gap-6">
+      {testimonials.map((t, i) => (
+        <div class="bg-cream p-8 flex flex-col justify-between group hover:shadow-lg transition-shadow duration-300">
+          <!-- Quote mark -->
+          <div>
+            <p class="font-display text-gold text-7xl leading-none mb-4 select-none opacity-50">"</p>
+            <p class="text-ink-light leading-relaxed text-sm mb-8">
+              {t.quote}
+            </p>
+          </div>
+
+          <!-- Author -->
+          <div class="flex items-center gap-4 pt-6 border-t border-cream-dark">
+            <!-- Avatar -->
+            <div class="w-10 h-10 rounded-full bg-gold-pale border border-gold flex items-center justify-center shrink-0">
+              <span class="font-display text-gold text-lg">{t.initial}</span>
+            </div>
+            <div>
+              <p class="text-sm font-medium text-ink">{t.author}</p>
+              <p class="text-xs text-ink-muted tracking-wide">{t.role}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,109 @@
+---
+// PracticeAreas.astro
+
+const areas = [
+  {
+    number: "01",
+    title: "Derecho Civil",
+    description:
+      "Contratos, sucesiones, propiedad inmobiliaria y responsabilidad civil. Protegemos sus derechos patrimoniales con rigor y precisión.",
+    items: ["Contratos y obligaciones", "Herencias y sucesiones", "Derecho inmobiliario"],
+  },
+  {
+    number: "02",
+    title: "Derecho Corporativo",
+    description:
+      "Asesoramos empresas en su constitución, operación y expansión. Fusiones, adquisiciones, contratos comerciales y cumplimiento normativo.",
+    items: ["Constitución de empresas", "Fusiones y adquisiciones", "Contratos comerciales"],
+  },
+  {
+    number: "03",
+    title: "Derecho Penal",
+    description:
+      "Defensa sólida en procesos penales. Representamos a nuestros clientes con discreción, estrategia y máximo compromiso.",
+    items: ["Defensa penal", "Delitos económicos", "Recursos y apelaciones"],
+  },
+  {
+    number: "04",
+    title: "Derecho Laboral",
+    description:
+      "Relaciones laborales, despidos, beneficios sociales y negociaciones colectivas. Tanto para empresas como para trabajadores.",
+    items: ["Despidos y liquidaciones", "Negociación colectiva", "Cumplimiento laboral"],
+  },
+  {
+    number: "05",
+    title: "Derecho Familiar",
+    description:
+      "Divorcios, custodia, alimentos y régimen patrimonial. Acompañamos a las familias en procesos delicados con empatía y profesionalismo.",
+    items: ["Divorcios y separaciones", "Custodia de menores", "Pensiones alimenticias"],
+  },
+  {
+    number: "06",
+    title: "Derecho Administrativo",
+    description:
+      "Trámites ante entidades del Estado, licitaciones, contratos públicos y recursos administrativos.",
+    items: ["Contratos con el Estado", "Recursos administrativos", "Licencias y permisos"],
+  },
+];
+---
+
+<section id="servicios" class="section-padding bg-cream">
+  <div class="container-narrow">
+
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
+      <div>
+        <p class="text-xs tracking-[0.3em] uppercase text-gold mb-4 flex items-center gap-3">
+          <span class="w-8 h-px bg-gold"></span>
+          Áreas de Práctica
+        </p>
+        <h2
+          class="font-display text-ink leading-tight"
+          style="font-size: var(--text-display-lg);"
+        >
+          Especialización<br />
+          que <em class="text-gold not-italic">marca</em> la diferencia.
+        </h2>
+      </div>
+      <p class="text-ink-muted max-w-sm leading-relaxed md:text-right">
+        Cada caso merece una estrategia única. Nuestro equipo combina conocimiento profundo y experiencia real.
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-cream-dark">
+      {areas.map((area) => (
+        <div class="bg-cream p-8 lg:p-10 group hover:bg-gold-pale transition-colors duration-300 cursor-default">
+          <!-- Number -->
+          <p class="font-display text-cream-dark group-hover:text-gold text-6xl leading-none mb-6 transition-colors duration-300 select-none">
+            {area.number}
+          </p>
+
+          <!-- Title -->
+          <h3 class="font-display text-ink text-2xl mb-4 leading-snug">
+            {area.title}
+          </h3>
+
+          <!-- Divider -->
+          <div class="w-8 h-px bg-gold mb-4 transition-all duration-300 group-hover:w-16"></div>
+
+          <!-- Description -->
+          <p class="text-ink-muted text-sm leading-relaxed mb-6">
+            {area.description}
+          </p>
+
+          <!-- Items -->
+          <ul class="flex flex-col gap-2">
+            {area.items.map((item) => (
+              <li class="flex items-center gap-2 text-xs tracking-wide text-ink-light">
+                <span class="w-1 h-1 rounded-full bg-gold shrink-0"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,152 @@
+---
+// Hero.astro
+---
+
+<section
+  id="inicio"
+  class="relative min-h-screen flex flex-col justify-center overflow-hidden pt-24"
+>
+  <!-- Subtle background texture/gradient -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div
+      class="absolute top-0 right-0 w-1/2 h-full bg-cream-dark opacity-40 [clip-path:polygon(15%_0,100%_0,100%_100%,0%_100%)]"
+    >
+    </div>
+    <!-- Gold accent line -->
+    <div
+      class="absolute left-[clamp(1.25rem,5vw,3rem)] top-1/4 bottom-1/4 w-px bg-linear-to-b from-transparent via-gold to-transparent opacity-40"
+    >
+    </div>
+  </div>
+
+  <div class="container-narrow relative z-10">
+    <div class="grid md:grid-cols-12 gap-8 items-center">
+      <!-- Left: Content -->
+      <div class="md:col-span-7 lg:col-span-6">
+        <!-- Eyebrow -->
+        <p
+          class="fade-up fade-up-delay-1 text-xs tracking-[0.3em] uppercase text-gold mb-6 flex items-center gap-3"
+        >
+          <span class="w-8 h-px bg-gold inline-block"></span>
+          Estudio Jurídico · Lima, Perú
+        </p>
+
+        <!-- Headline -->
+        <h1
+          class="fade-up fade-up-delay-2 font-display leading-[1.05] text-ink mb-8"
+          style="font-size: var(--text-display-xl);"
+        >
+          Defendemos<br />
+          lo que más<br />
+          <em class="text-gold not-italic">importa.</em>
+        </h1>
+
+        <!-- Subtitle -->
+        <p
+          class="fade-up fade-up-delay-3 text-ink-muted text-lg leading-relaxed max-w-md mb-12"
+        >
+          Más de 15 años de experiencia en derecho civil, corporativo y penal.
+          Asesoría precisa, discreta y comprometida con sus resultados.
+        </p>
+
+        <!-- CTAs -->
+        <div class="fade-up fade-up-delay-4 flex flex-wrap gap-4">
+          <a
+            href="#contacto"
+            class="inline-flex items-center gap-3 bg-ink text-cream px-8 py-4 text-sm tracking-widest uppercase hover:bg-gold transition-all duration-300 group"
+          >
+            Agendar Consulta
+            <svg
+              class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"></path>
+            </svg>
+          </a>
+          <a
+            href="#servicios"
+            class="inline-flex items-center gap-3 text-ink px-8 py-4 text-sm tracking-widest uppercase border border-cream-dark hover:border-ink transition-all duration-300"
+          >
+            Ver Servicios
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Stats card -->
+      <div
+        class="md:col-span-5 lg:col-span-5 lg:col-start-8 fade-up fade-up-delay-3"
+      >
+        <div class="relative">
+          <!-- Main image placeholder / abstract block -->
+          <div class="aspect-4/5 bg-ink relative overflow-hidden">
+            <img
+              src="/images/firma-oficina.webp"
+              alt="Oficina Martínez & Asociados"
+              class="absolute inset-0 w-full h-full object-cover object-center"
+            />
+            <!-- Decorative lines inside image block -->
+            <div class="absolute inset-0 flex items-end p-8">
+              <div class="border-l border-b border-gold w-16 h-16 opacity-60">
+              </div>
+            </div>
+            <div class="absolute top-8 right-8">
+              <div class="border-r border-t border-gold w-16 h-16 opacity-60">
+              </div>
+            </div>
+            <!-- Placeholder text for image -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <p
+                class="font-display text-cream text-opacity-20 text-6xl opacity-10 tracking-widest"
+              >
+                LEX
+              </p>
+            </div>
+            <!-- Overlay gradient -->
+            <div
+              class="absolute inset-0 bg-linear-to-t from-ink via-transparent to-transparent opacity-60"
+            >
+            </div>
+            <!-- Caption inside image -->
+            <div class="absolute bottom-8 left-8 right-8">
+              <p
+                class="text-cream text-xs tracking-widest uppercase opacity-60 mb-1"
+              >
+                Fundado en
+              </p>
+              <p class="font-display text-cream text-4xl">2009</p>
+            </div>
+          </div>
+
+          <!-- Floating stat card -->
+          <div
+            class="absolute -bottom-6 -left-6 bg-gold-pale border border-gold p-6 shadow-lg"
+          >
+            <p class="font-display text-ink text-5xl leading-none mb-1">+500</p>
+            <p class="text-xs tracking-widest uppercase text-ink-muted">
+              Casos Resueltos
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom scroll indicator -->
+    <div class="mt-20 flex items-center gap-4 fade-up fade-up-delay-4">
+      <div class="flex flex-col items-center gap-1">
+        <div
+          class="w-px h-8 bg-linear-to-b from-gold to-transparent animate-bounce"
+        >
+        </div>
+      </div>
+      <p class="text-xs tracking-[0.2em] uppercase text-ink-muted">
+        Scroll para explorar
+      </p>
+    </div>
+  </div>
+</section>

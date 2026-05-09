@@ -1,0 +1,33 @@
+---
+// Stats.astro
+
+const stats = [
+  { value: "15+",  label: "Años de experiencia" },
+  { value: "500+", label: "Casos resueltos"      },
+  { value: "98%",  label: "Tasa de éxito"        },
+  { value: "3",    label: "Premios nacionales"   },
+];
+---
+
+<section class="bg-ink py-20 overflow-hidden relative">
+  <!-- Decorative gold line -->
+  <div class="absolute left-0 top-0 bottom-0 w-1 bg-linear-to-b from-transparent via-gold to-transparent opacity-30"></div>
+
+  <div class="container-narrow">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-ink-light">
+      {stats.map((stat) => (
+        <div class="bg-ink px-8 py-12 text-center group">
+          <p
+            class="font-display text-gold leading-none mb-3 transition-all duration-300 group-hover:scale-105"
+            style="font-size: var(--text-display-lg);"
+          >
+            {stat.value}
+          </p>
+          <p class="text-xs tracking-[0.2em] uppercase text-cream opacity-50">
+            {stat.label}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
